@@ -1,5 +1,7 @@
 package ru.samsung.gamestudio;
 
+import static ru.samsung.gamestudio.MyGdxGame.SCR_HEIGHT;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
@@ -12,8 +14,14 @@ public class Bird {
 
     Texture[] framesArray;
     int frameCounter;
+    int width=200;
+    int height=200;
 
-
+    boolean isInField() {
+        if (y + height < 0) return false;
+        if (y > SCR_HEIGHT) return false;
+        return true;
+    }
 
     public Bird(int x, int y, int speed){
         this.x = x;
@@ -40,17 +48,19 @@ public class Bird {
 
             y += speed;
         } else {
-            y -= speed;
+            y -= 1.5 * speed;
         }
     }
 
     void draw(Batch batch) {
         int frameMultiplier = 10;
-        batch.draw(framesArray[frameCounter / frameMultiplier], x, y);
+        batch.draw(framesArray[frameCounter / frameMultiplier], x, y, width, height);
         if (frameCounter++ == framesArray.length * frameMultiplier - 1) frameCounter = 0;
     }
 
-//    public void dispose() {
-//        texture.dispose();
-//    }
+    void dispose() {
+        for (Texture texture : framesArray) {
+            texture.dispose();
+        }
+    }
 }
