@@ -17,7 +17,7 @@ public class Tube {
     final int width = 200;
     final int height = 700;
     int gapHeight = 400;
-    int padding = 100;
+    int padding = 30;
     boolean isPointReceived;
 
     Texture textureUpperTube;

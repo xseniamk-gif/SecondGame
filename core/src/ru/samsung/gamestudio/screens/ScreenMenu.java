@@ -17,7 +17,7 @@ public class ScreenMenu implements Screen {
     MovingBackground background;
     TextButton buttonStart;
     PointCounter pointCounter;
-    TextButton buttonFinish;
+    TextButton buttonFinish, buttonColor;
 
     int gamePoints;
 
@@ -25,9 +25,11 @@ public class ScreenMenu implements Screen {
         this.myGdxGame = myGdxGame;
 
 //        pointCounter = new PointCounter(750, 530);
-        buttonStart = new TextButton(100, 400, "Start");
-        buttonFinish = new TextButton(100, 200, "Exit");
+        buttonStart = new TextButton(100, 500, "Start", 2f);
+        buttonFinish = new TextButton(100, 300, "Exit", 2f);
+        buttonColor = new TextButton(100, 100, "Color for bird", 2f);
         background = new MovingBackground("pictures_for_game/background/restart_bg.png");
+
     }
 
     @Override
@@ -50,6 +52,9 @@ public class ScreenMenu implements Screen {
             if (buttonFinish.isHit((int) touch.x, (int) touch.y)) {
                 Gdx.app.exit();
             }
+            if (buttonColor.isHit((int) touch.x, (int) touch.y)) {
+                myGdxGame.setScreen(myGdxGame.screenColor);
+            }
         }
 
         ScreenUtils.clear(1, 0, 0, 1);
@@ -59,6 +64,7 @@ public class ScreenMenu implements Screen {
 
         background.draw(myGdxGame.batch);
         buttonStart.draw(myGdxGame.batch);
+        buttonColor.draw(myGdxGame.batch);
         buttonFinish.draw(myGdxGame.batch);
 //        pointCounter.draw(myGdxGame.batch, gamePoints);
 

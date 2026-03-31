@@ -5,10 +5,13 @@ import static ru.samsung.gamestudio.MyGdxGame.SCR_HEIGHT;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
+import ru.samsung.gamestudio.screens.ScreenColor;
+
 public class Bird {
 
     int x, y;
     int width, height;
+    ScreenColor color;
 
     int speed;
     int jumpHeight;
@@ -16,7 +19,10 @@ public class Bird {
     boolean jump = true;
 
     int frameCounter;
-    Texture[] framesArray;
+    public Texture[] framesArray;
+//    if (color == null) {
+//        String color = "blue";
+//    }
 
     public Bird(int x, int y, int speed, int width, int height) {
         this.x = x;
@@ -26,13 +32,15 @@ public class Bird {
         this.height = height;
         frameCounter = 0;
 
+
         framesArray = new Texture[]{
-                new Texture("pictures_for_game/bird/bird0.png"),
-                new Texture("pictures_for_game/bird/bird1.png"),
-                new Texture("pictures_for_game/bird/bird2.png"),
-                new Texture("pictures_for_game/bird/bird1.png"),
-        };
-    }
+                new Texture("pictures_for_game/bird/bird0_" + color + ".png"),
+                new Texture("pictures_for_game/bird/bird1_" + color + ".png"),
+                new Texture("pictures_for_game/bird/bird2_" + color + ".png"),
+                new Texture("pictures_for_game/bird/bird1_" + color + ".png")
+            };
+        }
+
 
     public void setY(int y) {
         this.y = y;

@@ -14,17 +14,19 @@ public class TextButton {
     Texture texture;
 
     int x, y;
+    float scale;
     int textX, textY;
     int buttonWidth, buttonHeight;
     int textWidth, textHeight;
 
-    public TextButton(int x, int y, String text) {
+    public TextButton(int x, int y, String text, float scale) {
         this.text = text;
         this.x = x;
         this.y = y;
+        this.scale = scale;
 
         font = new BitmapFont();
-        font.getData().scale(5f);
+        font.getData().scale(scale);
         font.setColor(Color.WHITE);
 
         GlyphLayout gl = new GlyphLayout(font, text);
@@ -32,8 +34,8 @@ public class TextButton {
         textHeight = (int) gl.height;
 
         texture = new Texture("pictures_for_game/button/button_bg.png");
-        buttonWidth = texture.getWidth();
-        buttonHeight = texture.getHeight();
+        buttonWidth = 320;
+        buttonHeight = 120;
 
         textX = x + (buttonWidth - textWidth) / 2;
         textY = y + (buttonHeight + textHeight) / 2;

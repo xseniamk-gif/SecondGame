@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import ru.samsung.gamestudio.screens.ScreenColor;
 import ru.samsung.gamestudio.screens.ScreenGame;
 import ru.samsung.gamestudio.screens.ScreenMenu;
 import ru.samsung.gamestudio.screens.ScreenRestart;
@@ -22,6 +23,7 @@ public class MyGdxGame extends Game {
 	int birdSpeed = 5;
 	public ScreenGame screenGame;
 	public ScreenRestart screenRestart;
+	public ScreenColor screenColor;
 
 	@Override
 	public void create() {
@@ -34,6 +36,7 @@ public class MyGdxGame extends Game {
 		screenGame = new ScreenGame(this);
 		screenRestart = new ScreenRestart(this);
 		screenMenu = new ScreenMenu(this);
+		screenColor = new ScreenColor(this);
 		setScreen(screenMenu);
 	}
 

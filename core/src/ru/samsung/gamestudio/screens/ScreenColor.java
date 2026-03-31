@@ -2,31 +2,38 @@ package ru.samsung.gamestudio.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import ru.samsung.gamestudio.characters.Bird;
 import ru.samsung.gamestudio.components.MovingBackground;
 import ru.samsung.gamestudio.MyGdxGame;
 import ru.samsung.gamestudio.components.PointCounter;
 import ru.samsung.gamestudio.components.TextButton;
 
-public class ScreenRestart implements Screen {
+public class ScreenColor implements Screen {
 
     MyGdxGame myGdxGame;
 
     MovingBackground background;
-    TextButton buttonRestart;
+    TextButton buttonRed;
+    TextButton buttonGreen;
+    TextButton buttonYellow;
     TextButton buttonMenu;
-    PointCounter pointCounter;
+    TextButton buttonBlue;
 
     int gamePoints;
+    public String color = "blue";
 
-    public ScreenRestart(MyGdxGame myGdxGame) {
+    public ScreenColor(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
 
-        pointCounter = new PointCounter(750, 530);
-        buttonRestart = new TextButton(100, 400, "Restart", 5f);
-        buttonMenu = new TextButton(100, 200, "Menu", 5f);
+        buttonRed = new TextButton(50, 200, "Red Bird", 3f);
+        buttonGreen = new TextButton(500, 200, "Green Bird", 3f);
+        buttonYellow = new TextButton(50, 400, "Yellow Bird", 3f);
+        buttonBlue = new TextButton(500, 400, "Blue Bird", 3f);
+        buttonMenu = new TextButton(860, 300, "Menu", 3f);
         background = new MovingBackground("pictures_for_game/background/restart_bg.png");
     }
 
@@ -44,8 +51,18 @@ public class ScreenRestart implements Screen {
                     new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)
             );
 
-            if (buttonRestart.isHit((int) touch.x, (int) touch.y)) {
-                myGdxGame.setScreen(myGdxGame.screenGame);
+            if (buttonRed.isHit((int) touch.x, (int) touch.y)) {
+                color = "red";
+            }
+            if (buttonGreen.isHit((int) touch.x, (int) touch.y)) {
+                color = "green";
+            }
+            if (buttonYellow.isHit((int) touch.x, (int) touch.y)) {
+                color = "yellow";
+            }
+            if (buttonBlue.isHit((int) touch.x, (int) touch.y)) {
+                color = "blue";
+
             }
             if (buttonMenu.isHit((int) touch.x, (int) touch.y)) {
                 myGdxGame.setScreen(myGdxGame.screenMenu);
@@ -58,9 +75,11 @@ public class ScreenRestart implements Screen {
         myGdxGame.batch.begin();
 
         background.draw(myGdxGame.batch);
-        buttonRestart.draw(myGdxGame.batch);
+        buttonBlue.draw(myGdxGame.batch);
+        buttonRed.draw(myGdxGame.batch);
+        buttonYellow.draw(myGdxGame.batch);
+        buttonGreen.draw(myGdxGame.batch);
         buttonMenu.draw(myGdxGame.batch);
-        pointCounter.draw(myGdxGame.batch, gamePoints);
 
         myGdxGame.batch.end();
     }
@@ -88,6 +107,6 @@ public class ScreenRestart implements Screen {
     @Override
     public void dispose() {
         background.dispose();
-        buttonRestart.dispose();
+
     }
 }
