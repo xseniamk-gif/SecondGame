@@ -1,23 +1,28 @@
 package ru.samsung.gamestudio;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+
+import ru.samsung.gamestudio.screens.ScreenGame;
+import ru.samsung.gamestudio.screens.ScreenMenu;
+import ru.samsung.gamestudio.screens.ScreenRestart;
 
 public class MyGdxGame extends Game {
 	public static final int SCR_WIDTH = 1280;
 	public static final int SCR_HEIGHT = 720;
 	public OrthographicCamera camera;
-	SpriteBatch batch;
+	public SpriteBatch batch;
+	public ScreenMenu screenMenu;
 	Texture birdTexture;
 	int birdX = 0;
 	int birdY = 0;
 	int birdSpeed = 5;
-	ScreenGame screenGame;
+	public ScreenGame screenGame;
+	public ScreenRestart screenRestart;
+
 	@Override
 	public void create() {
 
@@ -27,7 +32,9 @@ public class MyGdxGame extends Game {
 
 
 		screenGame = new ScreenGame(this);
-		setScreen(screenGame);
+		screenRestart = new ScreenRestart(this);
+		screenMenu = new ScreenMenu(this);
+		setScreen(screenMenu);
 	}
 
 	@Override

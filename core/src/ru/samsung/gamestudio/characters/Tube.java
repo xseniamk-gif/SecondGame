@@ -1,4 +1,4 @@
-package ru.samsung.gamestudio;
+package ru.samsung.gamestudio.characters;
 
 import static ru.samsung.gamestudio.MyGdxGame.SCR_HEIGHT;
 import static ru.samsung.gamestudio.MyGdxGame.SCR_WIDTH;
@@ -34,7 +34,7 @@ public class Tube {
         textureDownTube = new Texture("pictures_for_game/tube/tube.png");
     }
 
-    void move() {
+    public void move() {
         x -= speed;
         if (x < -width) {
             isPointReceived = false;
@@ -43,11 +43,11 @@ public class Tube {
         }
     }
 
-    void draw(Batch batch) {
+    public void draw(Batch batch) {
         batch.draw(textureUpperTube, x, gapY + gapHeight / 2, width, height);
         batch.draw(textureDownTube, x, gapY - gapHeight / 2 - height, width, height);
     }
-    void dispose() {
+    public void dispose() {
         textureDownTube.dispose();
         textureUpperTube.dispose();
     }
@@ -62,5 +62,8 @@ public class Tube {
 
     public boolean needAddPoint(Bird bird) {
         return bird.x > x + width && !isPointReceived;
+    }
+    public void setPointReceived() {
+        isPointReceived = true;
     }
 }
