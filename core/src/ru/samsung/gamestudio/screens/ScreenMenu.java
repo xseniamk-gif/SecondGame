@@ -57,6 +57,7 @@ public class ScreenMenu implements Screen {
             }
         }
 
+
         ScreenUtils.clear(1, 0, 0, 1);
         myGdxGame.camera.update();
         myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);

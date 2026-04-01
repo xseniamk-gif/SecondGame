@@ -11,7 +11,7 @@ public class Bird {
 
     int x, y;
     int width, height;
-    ScreenColor color;
+    String birdColor;  // Изменено на String
 
     int speed;
     int jumpHeight;
@@ -20,26 +20,23 @@ public class Bird {
 
     int frameCounter;
     public Texture[] framesArray;
-//    if (color == null) {
-//        String color = "blue";
-//    }
 
-    public Bird(int x, int y, int speed, int width, int height) {
+    public Bird(int x, int y, int speed, int width, int height, String color) {  // Добавлен параметр color
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.width = width;
         this.height = height;
+        this.birdColor = color;  // Сохраняем цвет
         frameCounter = 0;
-
 
         framesArray = new Texture[]{
                 new Texture("pictures_for_game/bird/bird0_" + color + ".png"),
                 new Texture("pictures_for_game/bird/bird1_" + color + ".png"),
                 new Texture("pictures_for_game/bird/bird2_" + color + ".png"),
                 new Texture("pictures_for_game/bird/bird1_" + color + ".png")
-            };
-        }
+        };
+    }
 
 
     public void setY(int y) {

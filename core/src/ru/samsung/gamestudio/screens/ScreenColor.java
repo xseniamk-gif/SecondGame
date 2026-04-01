@@ -24,7 +24,7 @@ public class ScreenColor implements Screen {
     TextButton buttonBlue;
 
     int gamePoints;
-    public String color = "blue";
+    public String selectedColor = "blue";
 
     public ScreenColor(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
@@ -46,23 +46,27 @@ public class ScreenColor implements Screen {
     public void render(float delta) {
 
         if (Gdx.input.justTouched()) {
-
             Vector3 touch = myGdxGame.camera.unproject(
                     new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)
             );
 
             if (buttonRed.isHit((int) touch.x, (int) touch.y)) {
-                color = "red";
+                selectedColor = "red";
+                myGdxGame.screenGame.setBirdColor("red");  // Устанавливаем цвет
+                myGdxGame.setScreen(myGdxGame.screenMenu);
+
             }
             if (buttonGreen.isHit((int) touch.x, (int) touch.y)) {
-                color = "green";
+                selectedColor = "green";
+                myGdxGame.screenGame.setBirdColor("green");
             }
             if (buttonYellow.isHit((int) touch.x, (int) touch.y)) {
-                color = "yellow";
+                selectedColor = "yellow";
+                myGdxGame.screenGame.setBirdColor("yellow");
             }
             if (buttonBlue.isHit((int) touch.x, (int) touch.y)) {
-                color = "blue";
-
+                selectedColor = "blue";
+                myGdxGame.screenGame.setBirdColor("blue");
             }
             if (buttonMenu.isHit((int) touch.x, (int) touch.y)) {
                 myGdxGame.setScreen(myGdxGame.screenMenu);

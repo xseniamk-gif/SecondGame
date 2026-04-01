@@ -36,14 +36,26 @@ public class ScreenGame implements Screen {
     boolean isGameOver;
     boolean ifPause=false;
     int c=1;
+    String birdColor = "blue";  // Добавьте поле для цвета
+
     public ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
 
         initTubes();
         background = new MovingBackground("pictures_for_game/background/game_bg.png");
-        bird = new Bird(20, SCR_HEIGHT / 2, 7, 180, 150);
+        // Передаем цвет птицы
+        bird = new Bird(20, SCR_HEIGHT / 2, 7, 180, 150, birdColor);
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
         buttonPause = new TextButton(10, 600, "Pause", 2f);
+    }
+
+    // Добавьте метод для обновления цвета
+    public void setBirdColor(String color) {
+        this.birdColor = color;
+        if (bird != null) {
+            bird.dispose();
+            bird = new Bird(20, SCR_HEIGHT / 2, 7, 180, 150, birdColor);
+        }
     }
 
 
@@ -115,9 +127,6 @@ public class ScreenGame implements Screen {
             pointCounter.draw(myGdxGame.batch, gamePoints);
 
             myGdxGame.batch.end();
-
-    }
-    public void pause (int gamePoints) {
 
     }
 
