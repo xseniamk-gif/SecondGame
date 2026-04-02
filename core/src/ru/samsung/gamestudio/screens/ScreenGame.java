@@ -122,9 +122,9 @@ public class ScreenGame implements Screen {
 
             background.draw(myGdxGame.batch);
             bird.draw(myGdxGame.batch);
-            buttonPause.draw(myGdxGame.batch);
             for (Tube tube : tubes) tube.draw(myGdxGame.batch);
             pointCounter.draw(myGdxGame.batch, gamePoints);
+            buttonPause.draw(myGdxGame.batch);
 
             myGdxGame.batch.end();
 

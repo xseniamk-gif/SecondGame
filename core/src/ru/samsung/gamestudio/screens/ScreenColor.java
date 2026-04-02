@@ -59,14 +59,17 @@ public class ScreenColor implements Screen {
             if (buttonGreen.isHit((int) touch.x, (int) touch.y)) {
                 selectedColor = "green";
                 myGdxGame.screenGame.setBirdColor("green");
+                myGdxGame.setScreen(myGdxGame.screenMenu);
             }
             if (buttonYellow.isHit((int) touch.x, (int) touch.y)) {
                 selectedColor = "yellow";
                 myGdxGame.screenGame.setBirdColor("yellow");
+                myGdxGame.setScreen(myGdxGame.screenMenu);
             }
             if (buttonBlue.isHit((int) touch.x, (int) touch.y)) {
                 selectedColor = "blue";
                 myGdxGame.screenGame.setBirdColor("blue");
+                myGdxGame.setScreen(myGdxGame.screenMenu);
             }
             if (buttonMenu.isHit((int) touch.x, (int) touch.y)) {
                 myGdxGame.setScreen(myGdxGame.screenMenu);
